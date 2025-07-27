@@ -39,7 +39,7 @@ export const ProductCard = ({ product }: ProductCardProps) => {
 
   return (
     <Link to={`/product/${product.id}`} className="block">
-      <div className="product-card h-full">
+      <div className="product-card group h-full">
         {/* Image Container */}
         <div className="relative aspect-[4/3] overflow-hidden">
           <img
