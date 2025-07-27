@@ -149,6 +149,19 @@
     @apply bg-gradient-to-r from-primary to-primary-hover bg-clip-text text-transparent;
   }
 
+  /* Marquee Animation */
+  .marquee-container {
+    @apply relative overflow-hidden;
+  }
+  
+  .marquee-content {
+    @apply flex animate-marquee whitespace-nowrap;
+  }
+  
+  .marquee-item {
+    @apply inline-block px-8 text-sm font-medium;
+  }
+
   .section-padding {
     @apply px-4 sm:px-6 lg:px-8;
   }

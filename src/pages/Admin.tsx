@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
-import { Package, Users, ShoppingCart, TrendingUp, Plus, Edit, Trash2, Eye } from 'lucide-react';
+import { Package, Users, ShoppingCart, TrendingUp, Plus, Edit, Trash2, Eye, Star, Gift } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -164,6 +164,8 @@ export default function Admin() {
             <TabsTrigger value="products">Product Management</TabsTrigger>
             <TabsTrigger value="orders">Order Management</TabsTrigger>
             <TabsTrigger value="customers">Customer Management</TabsTrigger>
+            <TabsTrigger value="loyalty">Loyalty Settings</TabsTrigger>
+            <TabsTrigger value="vouchers">Voucher Management</TabsTrigger>
           </TabsList>
 
           <TabsContent value="products">
@@ -356,6 +358,46 @@ export default function Admin() {
                 <Button asChild className="btn-primary">
                   <Link to="/admin/customers">
                     Go to Customer View
+                  </Link>
+                </Button>
+              </CardContent>
+            </Card>
+          </TabsContent>
+
+          <TabsContent value="loyalty">
+            <Card>
+              <CardHeader>
+                <CardTitle>Loyalty Settings</CardTitle>
+              </CardHeader>
+              <CardContent className="text-center py-8">
+                <Star className="h-12 w-12 mx-auto text-muted-foreground mb-4" />
+                <h3 className="text-lg font-semibold mb-2">Loyalty Points Management</h3>
+                <p className="text-muted-foreground mb-4">
+                  Set up custom loyalty point multipliers for specific customers and products.
+                </p>
+                <Button asChild className="btn-primary">
+                  <Link to="/admin/loyalty">
+                    Manage Loyalty Settings
+                  </Link>
+                </Button>
+              </CardContent>
+            </Card>
+          </TabsContent>
+
+          <TabsContent value="vouchers">
+            <Card>
+              <CardHeader>
+                <CardTitle>Voucher Management</CardTitle>
+              </CardHeader>
+              <CardContent className="text-center py-8">
+                <Gift className="h-12 w-12 mx-auto text-muted-foreground mb-4" />
+                <h3 className="text-lg font-semibold mb-2">Voucher & Coupon Management</h3>
+                <p className="text-muted-foreground mb-4">
+                  Create, manage, and track voucher redemptions and discount codes.
+                </p>
+                <Button asChild className="btn-primary">
+                  <Link to="/admin/vouchers">
+                    Manage Vouchers
                   </Link>
                 </Button>
               </CardContent>

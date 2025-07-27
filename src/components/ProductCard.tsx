@@ -8,9 +8,10 @@ import { useToast } from '@/hooks/use-toast';
 
 interface ProductCardProps {
   product: Product;
+  size?: 'small' | 'medium' | 'large';
 }
 
-export const ProductCard = ({ product }: ProductCardProps) => {
+export const ProductCard = ({ product, size = 'medium' }: ProductCardProps) => {
   const { addToCart } = useCart();
   const { toast } = useToast();
 
@@ -37,11 +38,48 @@ export const ProductCard = ({ product }: ProductCardProps) => {
     ));
   };
 
+  const getSizeClasses = () => {
+    switch (size) {
+      case 'small':
+        return {
+          container: 'h-auto',
+          image: 'aspect-[4/3]',
+          title: 'text-sm font-medium',
+          description: 'text-xs',
+          price: 'text-lg',
+          padding: 'p-3',
+          spacing: 'space-y-2',
+        };
+      case 'large':
+        return {
+          container: 'h-auto',
+          image: 'aspect-[4/3]',
+          title: 'text-xl font-semibold',
+          description: 'text-base',
+          price: 'text-2xl',
+          padding: 'p-6',
+          spacing: 'space-y-4',
+        };
+      default: // medium
+        return {
+          container: 'h-auto',
+          image: 'aspect-[4/3]',
+          title: 'text-lg font-semibold',
+          description: 'text-sm',
+          price: 'text-xl',
+          padding: 'p-4',
+          spacing: 'space-y-3',
+        };
+    }
+  };
+
+  const sizeClasses = getSizeClasses();
+
   return (
     <Link to={`/product/${product.id}`} className="block">
       <div className="product-card group h-full">
         {/* Image Container */}
-        <div className="relative aspect-[4/3] overflow-hidden">
+        <div className={`relative ${sizeClasses.image} overflow-hidden`}>
           <img
             src={product.image}
             alt={product.name}
@@ -60,31 +98,35 @@ export const ProductCard = ({ product }: ProductCardProps) => {
         </div>
 
         {/* Content */}
-        <div className="p-4 space-y-3">
+        <div className={`${sizeClasses.padding} ${sizeClasses.spacing}`}>
           {/* Category */}
-          <Badge variant="secondary" className="text-xs">
-            {product.category}
-          </Badge>
+          {size !== 'small' && (
+            <Badge variant="secondary" className="text-xs">
+              {product.category}
+            </Badge>
+          )}
 
           {/* Title */}
-          <h3 className="font-semibold text-lg leading-tight group-hover:text-primary transition-colors">
+          <h3 className={`${sizeClasses.title} leading-tight group-hover:text-primary transition-colors`}>
             {product.name}
           </h3>
 
           {/* Rating */}
           <div className="flex items-center space-x-2">
             <div className="flex">{renderStars(product.rating)}</div>
-            <span className="text-sm text-muted-foreground">
-              ({product.reviews})
-            </span>
+            {size !== 'small' && (
+              <span className="text-sm text-muted-foreground">
+                ({product.reviews})
+              </span>
+            )}
           </div>
 
           {/* Price */}
           <div className="flex items-center space-x-2">
-            <span className="text-xl font-bold text-primary">
+            <span className={`${sizeClasses.price} font-bold text-primary`}>
               ${product.price}
             </span>
-            {product.originalPrice && (
+            {product.originalPrice && size !== 'small' && (
               <span className="text-sm text-muted-foreground line-through">
                 ${product.originalPrice}
               </span>
@@ -92,9 +134,11 @@ export const ProductCard = ({ product }: ProductCardProps) => {
           </div>
 
           {/* Description */}
-          <p className="text-sm text-muted-foreground line-clamp-2">
-            {product.description}
-          </p>
+          {size !== 'small' && (
+            <p className={`${sizeClasses.description} text-muted-foreground line-clamp-2`}>
+              {product.description}
+            </p>
+          )}
 
           {/* Add to Cart Button */}
           <Button

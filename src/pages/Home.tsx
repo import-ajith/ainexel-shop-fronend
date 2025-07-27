@@ -81,30 +81,17 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Stats Section */}
-      <section className="py-12 bg-secondary/50">
-        <div className="container-width section-padding">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="text-center">
-              <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-primary/10 mb-4">
-                <ShoppingBag className="h-6 w-6 text-primary" />
-              </div>
-              <h3 className="text-2xl font-bold mb-2">1000+</h3>
-              <p className="text-muted-foreground">Happy Customers</p>
-            </div>
-            <div className="text-center">
-              <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-primary/10 mb-4">
-                <Star className="h-6 w-6 text-primary" />
-              </div>
-              <h3 className="text-2xl font-bold mb-2">4.8</h3>
-              <p className="text-muted-foreground">Average Rating</p>
-            </div>
-            <div className="text-center">
-              <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-primary/10 mb-4">
-                <TrendingUp className="h-6 w-6 text-primary" />
-              </div>
-              <h3 className="text-2xl font-bold mb-2">99%</h3>
-              <p className="text-muted-foreground">Satisfaction Rate</p>
+      {/* Offers Banner */}
+      <section className="py-4 bg-gradient-hero text-white overflow-hidden">
+        <div className="container-width">
+          <div className="marquee-container">
+            <div className="marquee-content">
+              <span className="marquee-item">🔥 Flash Sale: 50% OFF on all Electronics!</span>
+              <span className="marquee-item">💝 Free Shipping on orders above $100</span>
+              <span className="marquee-item">⚡ Limited Time: Buy 2 Get 1 FREE on Accessories</span>
+              <span className="marquee-item">🎯 New Customer Special: Extra 25% OFF with code WELCOME25</span>
+              <span className="marquee-item">📱 Smartphone Deal: Trade-in and save up to $300</span>
+              <span className="marquee-item">🎧 Premium Audio: Sony & Bose starting at $99</span>
             </div>
           </div>
         </div>
@@ -118,12 +105,14 @@ export default function Home() {
               <h2 className="text-3xl font-bold mb-2">Featured Products</h2>
               <p className="text-muted-foreground">Discover our best-selling items</p>
             </div>
-            <Link to="/products">
-              <Button variant="outline">
-                View All
-                <ArrowRight className="h-4 w-4 ml-2" />
-              </Button>
-            </Link>
+            <div className="flex gap-4">
+              <Link to="/products">
+                <Button variant="outline">
+                  View All Products
+                  <ArrowRight className="h-4 w-4 ml-2" />
+                </Button>
+              </Link>
+            </div>
           </div>
 
           {/* Filters */}
@@ -143,9 +132,9 @@ export default function Home() {
               </div>
               
               {filteredAndSortedProducts.length > 0 ? (
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                  {filteredAndSortedProducts.map((product) => (
-                    <ProductCard key={product.id} product={product} />
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                  {filteredAndSortedProducts.slice(0, 8).map((product) => (
+                    <ProductCard key={product.id} product={product} size="small" />
                   ))}
                 </div>
               ) : (

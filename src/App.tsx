@@ -14,6 +14,8 @@ import Login from "./pages/Login";
 import Orders from "./pages/Orders";
 import Admin from "./pages/Admin";
 import CustomerView from "./pages/CustomerView";
+import LoyaltySettings from "./pages/LoyaltySettings";
+import VoucherManagement from "./pages/VoucherManagement";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -36,6 +38,8 @@ const App = () => (
               <Route path="/orders" element={<Orders />} />
               <Route path="/admin" element={<Admin />} />
               <Route path="/admin/customers" element={<CustomerView />} />
+              <Route path="/admin/loyalty" element={<LoyaltySettings />} />
+              <Route path="/admin/vouchers" element={<VoucherManagement />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </BrowserRouter>
