@@ -13,6 +13,7 @@ import Checkout from "./pages/Checkout";
 import Login from "./pages/Login";
 import Orders from "./pages/Orders";
 import Admin from "./pages/Admin";
+import CustomerView from "./pages/CustomerView";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -34,6 +35,7 @@ const App = () => (
               <Route path="/login" element={<Login />} />
               <Route path="/orders" element={<Orders />} />
               <Route path="/admin" element={<Admin />} />
+              <Route path="/admin/customers" element={<CustomerView />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </BrowserRouter>

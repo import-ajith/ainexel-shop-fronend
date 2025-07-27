@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { Package, Users, ShoppingCart, TrendingUp, Plus, Edit, Trash2, Eye } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -163,6 +163,7 @@ export default function Admin() {
           <TabsList>
             <TabsTrigger value="products">Product Management</TabsTrigger>
             <TabsTrigger value="orders">Order Management</TabsTrigger>
+            <TabsTrigger value="customers">Customer Management</TabsTrigger>
           </TabsList>
 
           <TabsContent value="products">
@@ -337,6 +338,26 @@ export default function Admin() {
                     </div>
                   )}
                 </div>
+              </CardContent>
+            </Card>
+          </TabsContent>
+
+          <TabsContent value="customers">
+            <Card>
+              <CardHeader>
+                <CardTitle>Customer Management</CardTitle>
+              </CardHeader>
+              <CardContent className="text-center py-8">
+                <Users className="h-12 w-12 mx-auto text-muted-foreground mb-4" />
+                <h3 className="text-lg font-semibold mb-2">Advanced Customer Management</h3>
+                <p className="text-muted-foreground mb-4">
+                  Search and view detailed customer information, transaction history, loyalty points, and vouchers.
+                </p>
+                <Button asChild className="btn-primary">
+                  <Link to="/admin/customers">
+                    Go to Customer View
+                  </Link>
+                </Button>
               </CardContent>
             </Card>
           </TabsContent>

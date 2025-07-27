@@ -24,6 +24,36 @@ export interface User {
   name: string;
   role: 'customer' | 'admin';
   avatar?: string;
+  phone?: string;
+  dateJoined?: string;
+  totalOrders?: number;
+  totalSpent?: number;
+  loyaltyPoints?: number;
+  membershipTier?: 'Bronze' | 'Silver' | 'Gold' | 'Platinum';
+}
+
+export interface Voucher {
+  id: string;
+  code: string;
+  title: string;
+  description: string;
+  discountType: 'percentage' | 'fixed';
+  discountValue: number;
+  minOrderValue: number;
+  expiryDate: string;
+  isUsed: boolean;
+  usedDate?: string;
+}
+
+export interface Transaction {
+  id: string;
+  orderId: string;
+  type: 'purchase' | 'refund' | 'loyalty_earned' | 'loyalty_redeemed';
+  amount: number;
+  loyaltyPointsEarned?: number;
+  loyaltyPointsUsed?: number;
+  date: string;
+  description: string;
 }
 
 export interface Order {
